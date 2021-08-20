@@ -1,0 +1,726 @@
+---
+title: "EDA_LA1"
+output:
+  html_document: default
+  word_document: default
+---
+```{r}
+
+df = read.csv("NetflixOriginals.csv")
+head(df)
+head(df,n=10)
+tail(df)
+tail(df,n=10)
+head(summary(df))
+dim(df)
+dimnames(df)
+row(df)
+row.names(df)
+col(df)
+colnames(df)
+(class(df))
+(class(df$Title))
+class(df$Genre)
+class(df$Premiere)
+class(df$Runtime)
+class(df$IMDB.Score)
+class(df$Language)
+max(df$Runtime)
+max(df$IMDB.Score)
+min(df$Runtime)
+min(df$IMDB.Score)
+sum(head(df$Runtime))
+sum(head(df$IMDB.Score))
+fivenum(df$Runtime)
+stack(df)
+fivenum(df$IMDB.Score)
+length(df)
+mean(df$Runtime)
+median(df$Runtime)
+mode(df$Runtime)
+mad(df$Runtime)
+var(df$Runtime)
+quantile(df$Runtime)
+var(df$Runtime)
+rbind(df)
+cbind(df)
+cummax(df$Runtime)
+cummax(df$IMDB.Score)
+cummin(df$Runtime)
+cummin(df$IMDB.Score)
+cumsum(df$Runtime)
+cumsum(df$IMDB.Score)
+cumprod(df$Runtime)
+cumprod(df$IMDB.Score)
+sort(df$Runtime)
+sort(df$IMDB.Score)
+df[2,4]
+df[2,3:4]
+df[0,4]
+order(df$Runtime)
+order(df$IMDB.Score)
+str(df)
+structure(df)
+ls.str(df)
+names(df)
+attach(df)
+table(df$Genre)
+table(df$Premiere)
+table(df$Language)
+table(df$Title)
+View(df)
+nrow(df)
+ncol(df)
+sum(is.na(df))
+df[is.na(df)]
+
+
+```
+```{r}
+
+df1=df
+df1[is.na(df1)]=0
+df1
+head(stack(df))
+head(as.matrix(df))
+is.data.frame(df)
+is.table(df)
+seq_along(df)
+qqnorm(df$Runtime)
+qqnorm(df$IMDB.Score)
+df.mat = as.matrix(head(df))
+df.mat
+class(df)
+class(dimnames(head(df)))
+plot(df$Runtime)
+stem(df$Runtime)
+stem(df$Runtime, scale = 2)
+hist(df$Runtime)
+hist(df$Runtime, breaks = 'Sturges')
+hist(df$Runtime, breaks = 'Scott')
+hist(df$Runtime, breaks = 'FD')
+hist(df$Runtime, breaks = 'st')
+hist(df$Runtime, breaks = 10)
+hist(df$Runtime, col = 'gray', main = NULL, xlab = 'Size', ylim = c(0, 0.7), freq = FALSE)
+density = density(df$Runtime)
+
+density
+str(df)
+str(df$Runtime)
+str(df$IMDB.Score)
+dimnames(head(df))[[1]]
+dimnames(head(df))[[2]]
+head(df, n = 7)
+rank(head(df))
+rank(head(df$Runtime))
+rank(head(df$IMDB.Score))
+order(head(df$Runtime))
+order(head(df$IMDB.Score))
+search()
+length(df)
+length(df$Title)
+length(df$Genre)
+length(df$Premiere)
+
+```
+
+
+
+```{r}
+
+sin(head(df$Runtime))
+sin(head(df$IMDB.Score))
+cos(head(df$Runtime))
+cos(head(df$IMDB.Score))
+factorial(head(df$IMDB.Score))
+factorial(head(df$Runtime))
+abs(head(df$IMDB.Score))
+abs(head(df$Runtime))
+sqrt(head(df$Runtime))
+sqrt(head(df$IMDB.Score))
+tan(head(df$Runtime))
+tan(head(df$IMDB.Score))
+asin(head(df$IMDB.Score))
+asin(head(df$Runtime))
+ls()
+ls(pattern = 'da')
+ls(pattern = 'p')
+head(df[df > 7])
+head(df[df < 5 | df > 10], n = 10)
+sort(head(df$Runtime), decreasing = TRUE)
+sort(head(df$IMDB.Score), decreasing = TRUE)
+sort(head(df$Runtime), na.last = NA)
+sort(head(df$IMDB.Score), na.last = NA)
+sort(head(df$IMDB.Score), na.last = TRUE)
+sort(head(df$Runtime), na.last = TRUE)
+sort(head(df$Runtime), na.last = FALSE)
+sort(head(df$IMDB.Score), na.last = FALSE)
+
+names(df)
+mad(df$Runtime, na.rm = FALSE)
+sd(df$Runtime)
+sd(df$IMDB.Score)
+
+
+```
+
+
+```{r}
+plot(df$IMDB.Score)
+stem(df$IMDB.Score)
+stem(df$IMDB.Score, scale = 2)
+hist(df$IMDB.Score)
+hist(df$IMDB.Score, breaks = 'Sturges')
+hist(df$IMDB.Score, breaks = 'Scott')
+hist(df$IMDB.Score, breaks = 'FD')
+hist(df$IMDB.Score, breaks = 'st')
+hist(df$IMDB.Score, breaks = 10)
+hist(df$IMDB.Score, col = 'blue', main = NULL, xlab = 'Size', ylim = c(0, 0.7), freq = FALSE)
+density = density(df$IMDB.Score)
+
+density
+hist(df$IMDB.Score, col = 'green', main = NULL, xlab = 'Size', ylim = c(0, 0.7), freq = FALSE)
+density = density(df$IMDB.Score)
+
+density
+```
+
+
+```{r}
+table(df$Genre)
+table(df$Language)
+library(dplyr)
+library(gcookbook)
+
+temp=df %>% filter(df$Language=="French" & df$Genre == "War")
+temp
+
+english=df %>% filter(df$Language=="English")
+english
+
+french=df %>% filter(df$Language=="French")
+french
+
+hindi=df %>% filter(df$Language=="Hindi")
+hindi
+
+german=df %>% filter(df$Language=="German")
+german
+
+tamil=df %>% filter(df$Language=="Tamil")
+tamil
+
+bengali=df %>% filter(df$Language=="Bengali")
+bengali
+
+kannada=df %>% filter(df$Language=="Kannada")
+kannada
+
+japanese=df %>% filter(df$Language=="Japanese")
+japanese
+
+korean=df %>% filter(df$Language=="Korean")
+korean
+
+italian=df %>% filter(df$Language=="Italian")
+italian
+
+polish=df %>% filter(df$Language=="Polish")
+polish
+
+spanish=df %>% filter(df$Language=="Spanish")
+spanish
+
+portugese=df %>% filter(df$Language=="Portuguese")
+portugese
+
+marathi=df %>% filter(df$Language=="Marathi")
+marathi
+
+telugu=df %>% filter(df$Language=="Telugu")
+telugu
+
+thai=df %>% filter(df$Language=="Thai")
+thai
+```
+
+
+```{r}
+action=df %>% filter(df$Genre=="Action")
+action
+
+animation=df %>% filter(df$Genre=="Animation")
+animation
+
+actioncomedy=df %>% filter(df$Genre=="Action comedy")
+actioncomedy
+
+adventure=df %>% filter(df$Genre=="Adventure")
+adventure
+
+actionthriller=df %>% filter(df$Genre=="Action-thriller")
+actionthriller
+
+biopic=df %>% filter(df$Genre=="Biopic")
+biopic
+
+comedi=df %>% filter(df$Genre=="Comedy")
+comedi
+
+drama=df %>% filter(df$Genre=="Drama")
+drama
+
+famili=df %>% filter(df$Genre=="Family")
+famili
+
+documentary=df %>% filter(df$Genre=="Documentary")
+documentary
+
+blackcomdy=df %>% filter(df$Genre=="Black comedy")
+blackcomdy
+
+crime=df %>% filter(df$Genre=="Crime drama")
+crime
+
+darkcomedy=df %>% filter(df$Genre=="Dark comedy")
+darkcomedy
+
+horror=df %>% filter(df$Genre=="Horror")
+horror
+
+musical=df %>% filter(df$Genre=="Musical")
+musical
+
+mock=df %>% filter(df$Genre=="Mockumentary")
+mock
+
+mystery=df %>% filter(df$Genre=="Mystery")
+mystery
+
+romantic=df %>% filter(df$Genre=="Romance")
+romantic
+
+romanticcomedy=df %>% filter(df$Genre=="Romantic comedy")
+romanticcomedy
+
+science=df %>% filter(df$Genre=="Science fiction")
+science
+
+war=df %>% filter(df$Genre=="War")
+war
+
+thrill=df %>% filter(df$Genre=="Thriller")
+thrill
+
+tw=df %>% filter(df$Runtime >60)
+tw
+
+```
+
+```{r}
+tw=df %>% filter(df$Runtime >60 & df$Runtime <120)
+tw
+
+te=df %>% filter(df$Runtime >120 & df$Runtime <150)
+te
+
+ti=df %>% filter(df$Runtime <30)
+ti
+
+tim=df %>% filter(df$Runtime >150)
+tim
+```
+
+
+```{r}
+x=df %>% filter(df$IMDB.Score <4)
+x
+
+a=df %>% filter(df$IMDB.Score >4 & df$IMDB.Score <5)
+a
+
+b=df %>% filter(df$IMDB.Score >5 & df$IMDB.Score <6)
+b
+
+c=df %>% filter(df$IMDB.Score >6 & df$IMDB.Score <7)
+c
+
+d=df %>% filter(df$IMDB.Score >7 & df$IMDB.Score <8)
+d
+
+e=df %>% filter(df$IMDB.Score >8 & df$IMDB.Score <9)
+e
+
+f=df %>% filter(df$IMDB.Score >=9)
+f
+
+
+```
+
+```{r}
+qqnorm(df$Runtime, main = 'QQ plot of df$Runtime', xlab = 'Theoretical', 
+ylab = 'Quantiles for df$Runtime')
+qqline(df$Runtime, lwd = 2, lty = 2)
+
+qqnorm(df$IMDB.Score, main = 'QQ plot of df$IMDB.Score', xlab = 'Theoretical', 
+ylab = 'Quantiles for df$IMDB.Score')
+qqline(df$IMDB.Score, lwd = 2, lty = 2)
+
+qqplot(df$Runtime, df$IMDB.Score)
+
+qqp = qqplot(df$Runtime, df$IMDB.Score)
+abline(lm(qqp$y ~ qqp$x))
+
+t.test(df$Runtime, df$IMDB.Score)
+
+t.test(df$Runtime, df$IMDB.Score, var.equal = TRUE)
+t.test(df$Runtime, mu = 5)
+t.test(df$IMDB.Score, mu = 5)
+
+t.test(df$Runtime, mu = 5, alternative = 'greater')
+t.test(df$IMDB.Score, mu = 5, alternative = 'greater')
+
+wilcox.test(df$Runtime, df$IMDB.Score)
+
+cor(df$Runtime, df$IMDB.Score)
+x = cov(df$Runtime, df$IMDB.Score)
+x
+
+v = as.matrix(x)
+cov2cor(v)
+
+cor.test(df$Runtime, df$IMDB.Score)
+
+chisq.test(df$Runtime)
+chisq.test(df$IMDB.Score)
+
+```
+```{r}
+boxplot(df$Runtime)
+boxplot(df$IMDB.Score)
+boxplot(df$Runtime,df$IMDB.Score)
+
+boxplot(df$Runtime ~ df$IMDB.Score, data = df)
+
+boxplot(df$Runtime, horizontal = T)
+title(xlab = 'Time in min ')
+
+boxplot(df$IMDB.Score, horizontal = T)
+title(xlab = 'IMBD')
+
+with(df, plot(df$Runtime[df$IMDB.Score== '9'], pch = 0))
+with(df, plot(df$Runtime[df$IMDB.Score== '8'], pch = 0))
+with(df, plot(df$Runtime[df$IMDB.Score== '7'], pch = 0))
+with(df, plot(df$Runtime[df$IMDB.Score== '7'], pch = 2))
+
+with(df, plot(df$IMDB.Score[df$Language== 'English'], pch = 2))
+with(df, plot(df$IMDB.Score[df$Language== 'Hindi'], pch = 1))
+with(df, plot(df$IMDB.Score[df$Language== 'Korean'], pch = 0))
+with(df, plot(df$IMDB.Score[df$Language== 'Tamil'], pch = 2))
+with(df, plot(df$IMDB.Score[df$Language== 'French'], pch = 1))
+
+with(df, plot(df$IMDB.Score[df$Genre== 'Romance'], pch = 1))
+with(df, plot(df$IMDB.Score[df$Genre== 'Comedy'], pch = 3))
+with(df, plot(df$IMDB.Score[df$Genre== 'Documentary'], pch = 4))
+with(df, plot(df$IMDB.Score[df$Genre== 'Biopic'], pch = 0))
+
+```
+```{r}
+library(dplyr)
+library(gcookbook)
+
+plot(df$Runtime, type = 'l' )
+plot(df$IMDB.Score, type = 'l' )
+
+
+plot(df$Runtime, type = 'b')
+plot(df$IMDB.Score, type = 'b')
+
+pie(df$Runtime)
+pie(df$IMDB.Score)
+
+english=df %>% filter(df$Language=="English")
+pie(english$Runtime)
+
+dotchart(df$Runtime)
+dotchart(df$IMDB.Score)
+
+barplot(df$Runtime)
+title(xlab = 'movie', ylab = 'time')
+box()
+
+barplot(df$IMDB.Score)
+title(xlab = 'movie', ylab = 'IMBD')
+box()
+
+barplot(df$IMDB.Score, horiz = T)
+title(xlab = 'movie', ylab = 'time')
+box()
+
+barplot(df$IMDB.Score, horiz = T)
+title(xlab = 'movie', ylab = 'Imbd')
+box()
+
+```
+```{r}
+
+temp.aov = na.omit(aov(df$Runtime ~ df$IMDB.Score, data = df))
+temp.aov
+
+summary(temp.aov)
+
+factor(df$Runtime)
+factor(df$IMDB.Score)
+
+testCol = c(rep(df$Runtime - df$IMDB.Score, length(df)))
+head(testCol)
+
+test = data.frame(df, testCol)
+head(test)
+
+col(temp, as.factor = F)
+
+plot(1:10, 1:10, type = 'n')
+opt = par(cex = 1.5)
+text(1, 1, expression(hat(x)))
+text(2, 2, expression(alpha==x))
+text(3, 3, expression(beta==y))
+text(4, 4, expression(frac(x, y)))
+text(5, 5, expression(sum(x)))
+text(6, 6, expression(sum(x^2)))
+text(7, 7, expression(bar(x) == sum(frac(x[i], n), i==1, n)))
+text(8, 8, expression(sqrt(x)))
+text(9, 9, expression(sqrt(x, 3)))
+
+
+
+
+```
+```{r}
+
+head(df)
+
+x = df[ , 3:4]
+head(x)
+
+y = df[ , 3:2]
+head(y)
+
+z = df[ , 3:4]
+head(z)
+
+
+```
+
+
+```{r}
+plot(df$Runtime ~ df$IMDB.Score, data = df, main = 'plot 1')
+
+par(opt)
+plot(df$Runtime ~ df$IMDB.Score, data = df, main = 'plot 2')
+
+plot.new()
+plot.new()
+plot(df$Runtime ~ df$IMDB.Score, data = df, main = 'plot 3')
+```
+
+
+```{r}
+cummeadian = function(x) {
+tmp = seq_along(x)
+for(i in 1:length(tmp)) tmp[i] = median(x[1:i])
+print(x)}
+cummeadian(df$Runtime)
+
+cummeadian1 = function(x) {
+tmp = seq_along(x)
+for(i in 1:length(tmp)) tmp[i] = median(x[1:i])
+print(x)}
+cummeadian(df$IMDB.Score)
+
+log2 = function(x) log(x, base = 2)
+log2
+
+log2(df$Runtime)
+log2(df$IMDB.Score)
+
+manning = function(radius, gradient, coef=0.1125) (radius^(2/3)*gradient^0.5/coef)
+manning(radius = 1, gradient = 1/500)
+
+nlevels(df)
+
+
+```
+```{r}
+
+df_matrix = data.matrix(df)
+df_matrix
+
+nrow(df)
+ncol(df)
+
+range(max(df$Runtime)-min(df$Runtime))
+range(max(df$IMDB.Score)-min(df$IMDB.Score))
+
+quantile(df$Runtime,c(0.25, 0.5, 0.75))
+quantile(df$IMDB.Score,c(0.25, 0.5, 0.75))
+
+
+IQR(df$Runtime)
+IQR(df$IMDB.Score)
+
+head(unclass(df$Runtime))
+head(unclass(df$IMDB.Score))
+
+select(df,Runtime)
+select(df,IMDB.Score)
+
+select(df, 1)
+select(df, 5)
+
+mutate(df, "Runtime", 2)
+mutate(df, "IMDB.Score", 2)
+
+group_by(df, Runtime = as.factor(Runtime))
+group_by(df, IMDB.Score = as.factor(IMDB.Score))
+
+df_matrix = data.matrix(df)
+df_matrix
+
+
+```
+
+
+```{r}
+
+
+inherits(df$Runtime,what = 'A',which=FALSE)
+inherits(df$IMDB.Score,what = 'A',which=FALSE)
+
+oldClass(df$Runtime)
+oldClass(df$IMDB.Score)
+
+head(diff(df$Runtime))
+head(diff(df$IMDB.Score))
+
+head(scale(df$Runtime,scale=T))
+head(scale(df$IMDB.Score,scale=T))
+
+length(df$Runtime)
+head(rep(df$IMDB.Score))
+dim(df)
+
+head(dexp(df$Runtime, rate = 1, log = FALSE))
+head(dexp(df$IMDB.Score, rate = 1, log = FALSE))
+
+head(pexp(df$Runtime, rate = 1, lower.tail = TRUE, log.p = FALSE))
+head(pexp(df$IMDB.Score, rate = 1, lower.tail = TRUE, log.p = FALSE))
+
+head(rexp(df$Runtime))
+
+head(dgamma(df$Runtime, shape=1, rate = 1, log = FALSE))
+
+head(pgamma(df$IMDB.Score, shape=1, rate = 1, lower.tail = TRUE,log.p = FALSE))
+
+head(ppois(df$Runtime, lambda=1, log = FALSE))
+
+head(qweibull(df$IMDB.Score, shape=1, scale = 1, lower.tail = TRUE, log.p = FALSE))
+
+head(rcauchy(df$Runtime, location=1, scale=1))
+
+head(dbeta(df$IMDB.Score, shape1=1, shape2=2, ncp = 1, log = FALSE))
+
+```
+```{r}
+
+head(pt(df$Runtime, df=1, ncp=1, lower.tail = TRUE, log.p = FALSE))
+head(pt(df$IMDB.Score, df=1, ncp=1, lower.tail = TRUE, log.p = FALSE))
+
+head(rf(df$Runtime,df1=1,df2=1,ncp=1))
+head(rf(df$IMDB.Score,df1=1,df2=1,ncp=1))
+
+help("rchisq")
+
+head(pbinom(df$Runtime, size=1, prob=.25, log = FALSE))
+head(pbinom(df$IMDB.Score, size=1, prob=.25, log = FALSE))
+
+head(rmultinom(df$Runtime, size=1, prob=0.25))
+head(rmultinom(df$IMDB.Score, size=1, prob=0.25))
+
+head(pgeom(df$Runtime, prob=.25, lower.tail = TRUE, log.p = FALSE))
+head(pgeom(df$IMDB.Score, prob=.25, lower.tail = TRUE, log.p = FALSE))
+head(qgeom(df$Runtime, prob=.25, lower.tail = TRUE, log.p = FALSE))
+
+head(phyper(df$Runtime, m=1, n=1, k=1, lower.tail = TRUE, log.p = FALSE))
+head(phyper(df$IMDB.Score, m=1, n=1, k=1, lower.tail = TRUE, log.p = FALSE))
+
+head(rlogis(df$Runtime, location=0, scale=1))
+head(rlogis(df$IMDB.Score, location=0, scale=1))
+
+head(rlnorm(df$Runtime, meanlog=0, sdlog=1))
+head(rlnorm(df$IMDB.Score, meanlog=0, sdlog=1))
+
+head(rnbinom(df$Runtime,size = 1,mu=1))
+head(rnbinom(df$IMDB.Score,size = 1,mu=1))
+
+head(punif(df$Runtime, min = 0, max = 1, log = TRUE))
+head(punif(df$IMDB.Score, min = 0, max = 1, log = TRUE))
+
+head(pwilcox(df$Runtime, m=1, n=1, log = FALSE))
+head(pwilcox(df$IMDB.Score, m=1, n=1, log = FALSE))
+
+head(psignrank(df$Runtime, n=1, lower.tail = TRUE, log.p = FALSE))
+head(psignrank(df$IMDB.Score, n=1, lower.tail = TRUE, log.p = FALSE))
+
+
+```
+```{r}
+
+factor(df$Title)
+factor(df$Genre)
+factor(df$Premiere)
+factor(df$Language)
+
+```
+```{r}
+
+library(ggplot2)
+ggplot(temp, aes(x = df$Runtime, y = df$IMDB.Score)) + geom_point()
+plot(df$Runtime, type = 'l')
+plot(df$IMDB.Score, type = 'l')
+
+ggplot(df, aes(x = Runtime, y = IMDB.Score )) + geom_line()
+
+```
+```{r}
+table(df$Genre)
+table(df$Language)
+library(dplyr)
+library(gcookbook)
+
+t=df %>% filter(df$Language=="Hindi" & df$Genre == "Comedy")
+t
+
+t=df %>% filter(df$Language=="Hindi" & df$Runtime >=120)
+t
+
+t=df %>% filter(df$Language=="Hindi" & df$Genre == "Comedy")
+t
+
+t=df %>% filter(df$Language=="English" & df$Genre == "Comedy")
+t
+
+t=df %>% filter(df$Language=="English" & df$Genre == "Comedy")
+t
+
+```
+
+
+
+
+
+
+
+`
+
+ 
